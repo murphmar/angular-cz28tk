@@ -1,0 +1,60 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+  <div [@changeState]="stateTracker" class="example-form">
+    <form fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field fxFlex *ngIf="filteredStates | async as states">
+          <input matInput [readonly]="selectedVehicle.length > 0" [(ngModel)]="selectedVehicle" placeholder="VIN" aria-label="VIN" [matAutocomplete]="auto"
+            [formControl]="stateCtrl" (change)="handleEmptyInput($event)">
+          <mat-autocomplete #auto="matAutocomplete"  (optionSelected)="vehicleSelected($event)">
+            <mat-option *ngFor="let state of states" [value]="state.name">
+              <mat-icon>directions_car</mat-icon>
+              <span>{{state.population}}</span> -
+              <small>Customer: {{state.name}}</small>
+            </mat-option>
+            <mat-option *ngIf="states.length < 1">
+              <mat-icon>create</mat-icon>
+              <span>Create New</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <button [disabled]="selectedVehicle.length === 0" mat-icon-button (click)="selectedVehicle = '';stateTracker = '1'">
+          <mat-icon>clear</mat-icon>
+        </button>
+        </div>
+    </form>
+  </div>
+  <div [@changeState2]="stateTracker" class="vehicle-form">
+    <h3>2018 Ford Mustang</h3>
+    <form fxLayout="row wrap" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="33">
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field fxFlex="33">
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field fxFlex="33">
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field fxFlex="33">
+        <input matInput>
+      </mat-form-field>
+    </form>
+  </div>
+  <div [@changeState2]="stateTracker" class="customer-form">
+    <h3>Jimmy Westcott</h3>
+    <form fxLayout="row wrap" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="33">
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field fxFlex="33">
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field fxFlex="33">
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field fxFlex="33">
+        <input matInput>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
