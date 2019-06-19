@@ -17,3 +17,9 @@
   margin-top:8px;
   opacity: 0
 }
+
+.q-logo {
+  height:226px;
+  width: 256px;
+  z-index: 1;
+}

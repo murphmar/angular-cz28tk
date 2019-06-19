@@ -28,7 +28,17 @@ export interface State {
     trigger('changeState2', [
       state('2', style({
           opacity: 1,
-transform: 'translateY(-160px)'
+          transform: 'translateY(-160px)'
+      })),
+      transition('*=>2', animate('500ms ease-in-out')),
+      transition('*=>1', animate('500ms ease-in-out'))
+    ]),
+    trigger('changeState3', [
+      state('2', style({
+          height: '56px',
+          width: '64px',
+          transform: 'translate(-540px, -170px)'
+          // transform: 'translate(-100%, -100%)'
       })),
       transition('*=>2', animate('500ms ease-in-out')),
       transition('*=>1', animate('500ms ease-in-out'))
@@ -36,51 +46,45 @@ transform: 'translateY(-160px)'
   ]
 })
 export class AutocompleteOverviewExample {
-  stateCtrl = new FormControl();
-  filteredStates: Observable<State[]>;
+  vehicleControl = new FormControl();
+  filteredVehicles: Observable<Array<any>>;
   stateTracker = '1';
   selectedVehicle = '';
 
 
-  states: State[] = [
+  vehicles: any = [
     {
-      name: 'Mark Murphy',
-      population: '2017 Hyundai Elantra',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Arkansas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Arkansas.svg'
+      customer: 'Mark Murphy',
+      description: '2017 Hyundai Elantra',
+      vin: '1'
     },
     {
-      name: 'Jimmy Westcott',
-      population: '2018 Ford Mustang',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_California.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg'
+      customer: 'Jimmy Westcott',
+      description: '2018 Ford Mustang',
+      vin: '2'
     },
     {
-      name: 'Ryan Braybrook',
-      population: '1987 Honda CRV',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Florida.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Florida.svg'
+      customer: 'Ryan Braybrook',
+      description: '1987 Honda CRV',
+      vin: '3'
     },
     {
-      name: 'Luke Butler',
-      population: '1995 Mazda 3',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
+      customer: 'Luke Butler',
+      description: '1995 Mazda 3',
+      vin: '4'
     }
   ];
 
   constructor() {
-    this.filteredStates = this.stateCtrl.valueChanges
+    this.filteredVehicles = this.vehicleControl.valueChanges
       .pipe(
         startWith(''),
-        map(state => state ? this._filterStates(state) : this.states.slice())
+        map(vehicle => vehicle ? this._filteredVehicles(vehicle) : this.vehicles.slice())
       );
   }
 
-  private _filterStates(value: string): State[] {
-    const filterValue = value.toLowerCase();
-
-    return this.states.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
+  private _filteredVehicles(value: string): any[] {
+    return this.vehicles.filter(vehicle => vehicle.vin.indexOf(value) === 0);
   }
 
   

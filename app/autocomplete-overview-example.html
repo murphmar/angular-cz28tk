@@ -1,17 +1,18 @@
 <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+        <img [@changeState3]="stateTracker" class="q-logo"src="https://cdn.jsdelivr.net/gh/murphmar/angular-cz28tk@master/Q%20Logo%202015%20Reverse.png">
   <div [@changeState]="stateTracker" class="example-form">
     <form fxLayout="column">
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <mat-form-field fxFlex *ngIf="filteredStates | async as states">
+        <mat-form-field fxFlex *ngIf="filteredVehicles | async as filteredVehiclez">
           <input matInput [readonly]="selectedVehicle.length > 0" [(ngModel)]="selectedVehicle" placeholder="VIN" aria-label="VIN" [matAutocomplete]="auto"
-            [formControl]="stateCtrl" (change)="handleEmptyInput($event)">
+            [formControl]="vehicleControl" (change)="handleEmptyInput($event)">
           <mat-autocomplete #auto="matAutocomplete"  (optionSelected)="vehicleSelected($event)">
-            <mat-option *ngFor="let state of states" [value]="state.name">
+            <mat-option *ngFor="let vehicle of filteredVehiclez" [value]="vehicle.vin">
               <mat-icon>directions_car</mat-icon>
-              <span>{{state.population}}</span> -
-              <small>Customer: {{state.name}}</small>
+              <span>{{vehicle.description}}</span> -
+              <small>Customer: {{vehicle.customer}}</small>
             </mat-option>
-            <mat-option *ngIf="states.length < 1">
+            <mat-option *ngIf="filteredVehiclez.length < 1">
               <mat-icon>create</mat-icon>
               <span>Create New</span>
             </mat-option>
