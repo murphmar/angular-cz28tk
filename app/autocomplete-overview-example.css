@@ -23,3 +23,7 @@
   width: 256px;
   z-index: 1;
 }
+
+.secondary {
+  color: rgb(127,197,78);
+}

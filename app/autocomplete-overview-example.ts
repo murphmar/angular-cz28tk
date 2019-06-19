@@ -37,7 +37,7 @@ export interface State {
       state('2', style({
           height: '56px',
           width: '64px',
-          transform: 'translate(-540px, -170px)'
+          transform: 'translate(-540px, -110px)'
           // transform: 'translate(-100%, -100%)'
       })),
       transition('*=>2', animate('500ms ease-in-out')),
@@ -49,28 +49,40 @@ export class AutocompleteOverviewExample {
   vehicleControl = new FormControl();
   filteredVehicles: Observable<Array<any>>;
   stateTracker = '1';
-  selectedVehicle = '';
-
+  selectedVehicleDescription = '';
+  selectedVehicle = {};
 
   vehicles: any = [
     {
-      customer: 'Mark Murphy',
-      description: '2017 Hyundai Elantra',
+      customerFirstName: 'Mark',
+      customerLastName: 'Murphy',
+      year: '2017',
+      make: 'Hyundai',
+      model: 'Elantra',
       vin: '1'
     },
     {
-      customer: 'Jimmy Westcott',
-      description: '2018 Ford Mustang',
+      customerFirstName: 'Jimmy',
+      customerLastName: 'Westcott',
+      year: '2018',
+      make: 'Ford',
+      model: 'Mustang',
       vin: '2'
     },
     {
-      customer: 'Ryan Braybrook',
-      description: '1987 Honda CRV',
+      customerFirstName: 'Ryan',
+      customerLastName: 'Braybrook',
+      year: '1982',
+      make: 'Honda',
+      model: 'CRV',
       vin: '3'
     },
     {
-      customer: 'Luke Butler',
-      description: '1995 Mazda 3',
+      customerFirstName: 'Luke',
+      customerLastName: 'Butler',
+      year: '1998',
+      make: 'Mazda',
+      model: '3',
       vin: '4'
     }
   ];
@@ -88,8 +100,11 @@ export class AutocompleteOverviewExample {
   }
 
   
-  vehicleSelected(event: Event){
+  vehicleSelected(event: any){
     this.stateTracker = '2';
+    this.selectedVehicle = event.option.value;
+    this.selectedVehicleDescription = event.option.value.vin;
+    console.log(this.selectedVehicle);
   }
 
   handleEmptyInput(event: any){
