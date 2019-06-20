@@ -18,6 +18,9 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
+        <button mat-icon-button>
+          <mat-icon svgIcon="barcode_scanner"></mat-icon>
+        </button>
         <button [disabled]="selectedVehicleDescription.length === 0" mat-icon-button (click)="selectedVehicleDescription = '';stateTracker = '1'">
           <mat-icon>clear</mat-icon>
         </button>

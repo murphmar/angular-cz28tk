@@ -3,6 +3,9 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
+
 
 export interface State {
   flag: string;
@@ -87,7 +90,12 @@ export class AutocompleteOverviewExample {
     }
   ];
 
-  constructor() {
+  constructor(private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry) {
+    this.matIconRegistry.addSvgIcon(
+      `barcode_scanner`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/barcode-scan.svg`)
+    );
+
     this.filteredVehicles = this.vehicleControl.valueChanges
       .pipe(
         startWith(''),
