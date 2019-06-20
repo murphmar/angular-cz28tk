@@ -12,7 +12,7 @@
               <span>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</span> -
               <small>Customer: {{vehicle.customerFirstName}} {{vehicle.customerLastName}}</small>
             </mat-option>
-            <mat-option *ngIf="filteredVehiclez.length < 1" fxLayoutAlign="center center">
+            <mat-option *ngIf="filteredVehiclez.length < 1" fxLayoutAlign="center center" value="new">
               <mat-icon class="secondary" >add_circle</mat-icon>
               <span>Add Vehicle</span>
             </mat-option>
@@ -60,14 +60,14 @@
       </button>
     </div>
     <mat-list>
-      <mat-list-item>
+      <mat-list-item *ngIf="selectedVehicle.vin">
         <div mat-list-icon>
           <mat-icon>build</mat-icon>
         </div>
         <h4 mat-line>June 30th</h4>
         <p mat-line>Service appointment description</p>
       </mat-list-item>
-       <mat-list-item>
+       <mat-list-item *ngIf="selectedVehicle.vin">
         <div mat-list-icon>
           <mat-icon>build</mat-icon>
         </div>

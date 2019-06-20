@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -30,18 +30,18 @@ export interface State {
     ]),
     trigger('changeState2', [
       state('2', style({
-          opacity: 1,
-          transform: 'translateY(-160px)'
+        opacity: 1,
+        transform: 'translateY(-160px)'
       })),
       transition('*=>2', animate('500ms ease-in-out')),
       transition('*=>1', animate('500ms ease-in-out'))
     ]),
     trigger('changeState3', [
       state('2', style({
-          height: '56px',
-          width: '64px',
-          transform: 'translate(-540px, -110px)'
-          // transform: 'translate(-100%, -100%)'
+        height: '56px',
+        width: '64px',
+        transform: 'translate(-540px, -110px)'
+        // transform: 'translate(-100%, -100%)'
       })),
       transition('*=>2', animate('500ms ease-in-out')),
       transition('*=>1', animate('500ms ease-in-out'))
@@ -107,17 +107,20 @@ export class AutocompleteOverviewExample {
     return this.vehicles.filter(vehicle => vehicle.vin.indexOf(value) === 0);
   }
 
-  
-  vehicleSelected(event: any){
+
+  vehicleSelected(event: any) {
+    if (event.option.value == 'new') {
+      this.selectedVehicle = {};
+    } else {
+      this.selectedVehicle = event.option.value;
+      this.selectedVehicleDescription = event.option.value.vin;
+    }
     this.stateTracker = '2';
-    this.selectedVehicle = event.option.value;
-    this.selectedVehicleDescription = event.option.value.vin;
-    console.log(this.selectedVehicle);
   }
 
-  handleEmptyInput(event: any){
-    if(event.target.value === '') {
+  handleEmptyInput(event: any) {
+    if (event.target.value === '') {
       this.stateTracker = '1';
     }
-}
+  }
 }
