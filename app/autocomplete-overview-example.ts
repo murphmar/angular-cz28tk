@@ -40,7 +40,7 @@ export interface State {
       state('2', style({
         height: '56px',
         width: '64px',
-        transform: 'translate(-540px, -110px)'
+        transform: 'translate(-1140px, -110px)'
         // transform: 'translate(-100%, -100%)'
       })),
       transition('*=>2', animate('500ms ease-in-out')),
