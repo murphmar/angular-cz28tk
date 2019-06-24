@@ -1,5 +1,5 @@
 <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
-        <img [@changeState3]="stateTracker" class="q-logo"src="https://cdn.jsdelivr.net/gh/murphmar/angular-cz28tk@master/Q%20Logo%202015%20Reverse.png">
+	<img [@changeState3]="stateTracker" class="q-logo"src="https://cdn.jsdelivr.net/gh/murphmar/angular-cz28tk@master/Q%20Logo%202015%20Reverse.png">
   <div [@changeState]="stateTracker" class="example-form">
     <form fxLayout="column">
       <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -12,47 +12,47 @@
               <span>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</span> -
               <small>Customer: {{vehicle.customerFirstName}} {{vehicle.customerLastName}}</small>
             </mat-option>
-            <mat-option *ngIf="filteredVehiclez.length < 1" fxLayoutAlign="center center" value="new">
+            <mat-option fxLayoutAlign="center center" value="new">
               <mat-icon class="secondary" >add_circle</mat-icon>
               <span>Add Vehicle</span>
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-        <button mat-icon-button>
-          <mat-icon svgIcon="barcode_scanner"></mat-icon>
-        </button>
         <button [disabled]="selectedVehicleDescription.length === 0" mat-icon-button (click)="selectedVehicleDescription = '';stateTracker = '1'">
           <mat-icon>clear</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon svgIcon="barcode_scanner"></mat-icon>
         </button>
         </div>
     </form>
   </div>
   <div [@changeState2]="stateTracker" class="vehicle-form">
     <h2>Vehicle</h2>
-    <form fxLayout="row wrap" fxLayoutAlign="start center">
-      <mat-form-field fxFlex="33">
+    <form fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="8px">
+      <mat-form-field fxFlex="30">
         <input matInput placeholder="Year" name="year" [(ngModel)]="selectedVehicle.year">
       </mat-form-field>
-      <mat-form-field fxFlex="33">
+      <mat-form-field fxFlex="30">
         <input matInput placeholder="Make"  name="make" [(ngModel)]="selectedVehicle.make">
       </mat-form-field>
-      <mat-form-field fxFlex="33">
+      <mat-form-field fxFlex="30">
         <input matInput placeholder="Model"  name="model" [(ngModel)]="selectedVehicle.model">
       </mat-form-field>
     </form>
   </div>
   <div [@changeState2]="stateTracker" class="customer-form">
     <h2>Customer</h2>
-    <form fxLayout="row wrap" fxLayoutAlign="start center">
-      <mat-form-field fxFlex="33">
+    <form fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="8px">
+      <mat-form-field fxFlex="30">
         <input matInput placeholder="First Name" name="customerFirstName" [(ngModel)]="selectedVehicle.customerFirstName">
       </mat-form-field>
-      <mat-form-field fxFlex="33">
+      <mat-form-field fxFlex="30">
         <input matInput placeholder="Last Name" name="customerLastName" [(ngModel)]="selectedVehicle.customerLastName">
       </mat-form-field>
     </form>
   </div>
-  <div [@changeState2]="stateTracker" class="customer-form">
+  <div [@changeState2]="stateTracker" class="customer-form"  *ngIf="selectedVehicle.vin">
     <div fxLayoutAlign="space-between center">
       <h2>Appointments</h2>
       <button mat-icon-button class="secondary">
@@ -60,14 +60,14 @@
       </button>
     </div>
     <mat-list>
-      <mat-list-item *ngIf="selectedVehicle.vin">
+      <mat-list-item >
         <div mat-list-icon>
           <mat-icon>build</mat-icon>
         </div>
         <h4 mat-line>June 30th</h4>
         <p mat-line>Service appointment description</p>
       </mat-list-item>
-       <mat-list-item *ngIf="selectedVehicle.vin">
+       <mat-list-item >
         <div mat-list-icon>
           <mat-icon>build</mat-icon>
         </div>

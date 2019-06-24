@@ -22,6 +22,7 @@
   height:226px;
   width: 256px;
   z-index: 1;
+  margin-bottom:16px;
 }
 
 .secondary {

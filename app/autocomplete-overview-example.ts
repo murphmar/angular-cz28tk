@@ -93,7 +93,7 @@ export class AutocompleteOverviewExample {
   constructor(private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry) {
     this.matIconRegistry.addSvgIcon(
       `barcode_scanner`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/barcode-scan.svg`)
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJ%0D%0AQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9T%0D%0AVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAv%0D%0Ac3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0i%0D%0AMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0i%0D%0ATTQsNkg2VjE4SDRWNk03LDZIOFYxOEg3VjZNOSw2SDEyVjE4SDlWNk0xMyw2SDE0VjE4SDEzVjZN%0D%0AMTYsNkgxOFYxOEgxNlY2TTE5LDZIMjBWMThIMTlWNk0yLDRWOEgwVjRBMiwyIDAgMCwxIDIsMkg2%0D%0AVjRIMk0yMiwyQTIsMiAwIDAsMSAyNCw0VjhIMjJWNEgxOFYySDIyTTIsMTZWMjBINlYyMkgyQTIs%0D%0AMiAwIDAsMSAwLDIwVjE2SDJNMjIsMjBWMTZIMjRWMjBBMiwyIDAgMCwxIDIyLDIySDE4VjIwSDIy%0D%0AWiIgLz48L3N2Zz4=`)
     );
 
     this.filteredVehicles = this.vehicleControl.valueChanges
